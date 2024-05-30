@@ -12,7 +12,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">Home</a></li>
                             <li class="breadcrumb-item active">Categories</li>
                         </ol>
                     </div><!-- /.col -->
@@ -39,6 +39,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Title</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -46,6 +47,10 @@
                                             <tr>
                                                 <td>{{ $category->id }}</td>
                                                 <td>{{ $category->title }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.category.show', $category->id) }}"
+                                                        class="far fa-list-alt"></a>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
