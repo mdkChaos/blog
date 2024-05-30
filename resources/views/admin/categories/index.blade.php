@@ -39,7 +39,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Title</th>
-                                            <th>Actions</th>
+                                            <th colspan="3">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -50,6 +50,14 @@
                                                 <td>
                                                     <a href="{{ route('admin.category.show', $category->id) }}"
                                                         class="far fa-list-alt"></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('admin.category.edit', $category->id) }}"
+                                                        class="fas fa-edit"></a>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('admin.category.edit', $category->id) }}"
+                                                        class="fas fa-trash-alt"></a>
                                                 </td>
                                             </tr>
                                         @endforeach
