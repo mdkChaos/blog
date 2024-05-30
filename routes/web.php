@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Category\CreateController as CategoryCreateContro
 use App\Http\Controllers\Admin\Category\StoreController as CategoryStoreController;
 use App\Http\Controllers\Admin\Category\ShowController as CategoryShowController;
 use App\Http\Controllers\Admin\Category\EditController as CategoryEditController;
+use App\Http\Controllers\Admin\Category\UpdateController as CategoryUpdateController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', MainIndexController::class);
@@ -20,6 +21,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/create', CategoryStoreController::class)->name('store');
         Route::get('/{category}', CategoryShowController::class)->name('show');
         Route::get('/{category}/edit', CategoryEditController::class)->name('edit');
+        Route::patch('/{category}', CategoryUpdateController::class)->name('update');
     });
 });
 

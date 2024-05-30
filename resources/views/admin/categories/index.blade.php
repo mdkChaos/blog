@@ -49,15 +49,15 @@
                                                 <td>{{ $category->title }}</td>
                                                 <td>
                                                     <a href="{{ route('admin.category.show', $category->id) }}"
-                                                        class="far fa-list-alt"></a>
+                                                        class="far fa-eye text-info"></a>
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('admin.category.edit', $category->id) }}"
-                                                        class="fas fa-edit"></a>
+                                                        class="fas fa-edit text-success"></a>
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('admin.category.edit', $category->id) }}"
-                                                        class="fas fa-trash-alt"></a>
+                                                        class="fas fa-trash-alt text-danger"></a>
                                                 </td>
                                             </tr>
                                         @endforeach
