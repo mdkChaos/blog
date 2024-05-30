@@ -39,7 +39,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Title</th>
-                                            <th colspan="3">Actions</th>
+                                            <th colspan="3" class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -47,17 +47,23 @@
                                             <tr>
                                                 <td>{{ $category->id }}</td>
                                                 <td>{{ $category->title }}</td>
-                                                <td>
+                                                <td class="text-center">
                                                     <a href="{{ route('admin.category.show', $category->id) }}"
                                                         class="far fa-eye text-info"></a>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     <a href="{{ route('admin.category.edit', $category->id) }}"
                                                         class="fas fa-edit text-success"></a>
                                                 </td>
-                                                <td>
-                                                    <a href="{{ route('admin.category.edit', $category->id) }}"
-                                                        class="fas fa-trash-alt text-danger"></a>
+                                                <td class="text-center">
+                                                    <form action="{{ route('admin.category.delete', $category->id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="border-0 bg-transparent">
+                                                            <i class="fas fa-trash-alt text-danger" role="button"></i>
+                                                        </button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
