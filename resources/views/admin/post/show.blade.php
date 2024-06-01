@@ -35,7 +35,7 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-hover text-nowrap">
@@ -52,10 +52,10 @@
                                             <td>Content</td>
                                             <td>{{ $post->content }}</td>
                                         </tr>
-                                        <tr>
+                                        {{-- <tr>
                                             <td>Category</td>
                                             <td>{{ $post->category_id }}</td>
-                                        </tr>
+                                        </tr> --}}
                                     </tbody>
                                 </table>
                             </div>

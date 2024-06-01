@@ -28,10 +28,10 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('admin.post.update', $post->id) }}" method="post" class="form w-25">
+                        <form action="{{ route('admin.post.update', $post->id) }}" method="post">
                             @csrf
                             @method('patch')
-                            <div class="form-group">
+                            <div class="form-group form w-25">
                                 <label>Name post</label>
                                 <input type="text" name="title" class="form-control" value="{{ $post->title }}">
                                 @error('title')
@@ -40,19 +40,19 @@
                             </div>
                             <div class="form-group">
                                 <label>Content</label>
-                                <input type="text" name="content" class="form-control" placeholder="content">
+                                <textarea id="summernote" name="content" class="form-control">{{ $post->content }}</textarea>
                                 @error('content')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Category</label>
                                 <input type="text" name="category_id" class="form-control" placeholder="Category">
                                 @error('category_id')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
-                            <input type="submit" value="Update" class="btn btn-primary col-4">
+                            </div> --}}
+                            <input type="submit" value="Update" class="btn btn-primary col-1">
                         </form>
                     </div>
                 </div>

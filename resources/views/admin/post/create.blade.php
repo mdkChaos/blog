@@ -28,30 +28,33 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('admin.post.store') }}" method="post" class="form w-25">
+                        <form action="{{ route('admin.post.store') }}" method="post">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group form w-25">
                                 <label>Name post</label>
-                                <input type="text" name="title" class="form-control" placeholder="Name post">
+                                <input type="text" name="title" class="form-control" placeholder="Name post"
+                                    value="{{ old('title') }}">
                                 @error('title')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label>Content</label>
-                                <input type="text" name="content" class="form-control" placeholder="content">
+                                <textarea id="summernote" name="content" class="form-control">{{ old('content') }}</textarea>
                                 @error('content')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Category</label>
                                 <input type="text" name="category_id" class="form-control" placeholder="Category">
                                 @error('category_id')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
+                            </div> --}}
+                            <div class="form-group">
+                                <input type="submit" value="Add" class="btn btn-primary col-1">
                             </div>
-                            <input type="submit" value="Add" class="btn btn-primary col-4">
                         </form>
                     </div>
                 </div>
