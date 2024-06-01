@@ -69,9 +69,8 @@
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- Summernote -->
     <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
+    <!-- bs-custom-file-input -->
+    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <!-- daterangepicker -->
     <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
@@ -80,6 +79,7 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
     <script>
+        $.widget.bridge('uibutton', $.ui.button);
         $(document).ready(function() {
             $('#summernote').summernote({
                 toolbar: [
@@ -92,6 +92,9 @@
                     ['height', ['height']]
                 ]
             });
+        });
+        $(function() {
+            bsCustomFileInput.init();
         });
     </script>
 </body>
