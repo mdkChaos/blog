@@ -57,6 +57,9 @@
                                         <span class="input-group-text">Upload</span>
                                     </div>
                                 </div>
+                                @error('preview_image')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group w-50">
                                 <label for="exampleInputFile">Add main image</label>
@@ -69,14 +72,23 @@
                                         <span class="input-group-text">Upload</span>
                                     </div>
                                 </div>
+                                @error('main_image')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
-                            {{-- <div class="form-group">
-                                <label>Category</label>
-                                <input type="text" name="category_id" class="form-control" placeholder="Category">
+                            <div class="form-group w-25">
+                                <label>Select Category</label>
+                                <select name="category_id" class="form-control">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ $category->id == old('category_id') ? 'selected' : '' }}>
+                                            {{ $category->title }}</option>
+                                    @endforeach
+                                </select>
                                 @error('category_id')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div> --}}
+                            </div>
                             <div class="form-group">
                                 <input type="submit" value="Add" class="btn btn-primary col-1">
                             </div>

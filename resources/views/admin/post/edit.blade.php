@@ -45,13 +45,17 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            {{-- <div class="form-group">
-                                <label>Category</label>
-                                <input type="text" name="category_id" class="form-control" placeholder="Category">
+                            <div class="form-group w-25">
+                                <label>Select Category</label>
+                                <select name="category_id" class="form-control">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                    @endforeach
+                                </select>
                                 @error('category_id')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div> --}}
+                            </div>
                             <input type="submit" value="Update" class="btn btn-primary col-1">
                         </form>
                     </div>

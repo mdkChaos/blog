@@ -52,10 +52,10 @@
                                             <td>Content</td>
                                             <td>{{ $post->content }}</td>
                                         </tr>
-                                        {{-- <tr>
+                                        <tr>
                                             <td>Category</td>
                                             <td>{{ $post->category_id }}</td>
-                                        </tr> --}}
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
