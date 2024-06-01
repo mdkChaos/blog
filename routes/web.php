@@ -1,29 +1,34 @@
 <?php
 
-use App\Http\Controllers\Main\IndexController as MainIndexController;
-use App\Http\Controllers\Admin\Main\IndexController as AdminIndexController;
-use App\Http\Controllers\Admin\Category\IndexController as CategoryIndexController;
-use App\Http\Controllers\Admin\Category\CreateController as CategoryCreateController;
-use App\Http\Controllers\Admin\Category\StoreController as CategoryStoreController;
-use App\Http\Controllers\Admin\Category\ShowController as CategoryShowController;
-use App\Http\Controllers\Admin\Category\EditController as CategoryEditController;
-use App\Http\Controllers\Admin\Category\UpdateController as CategoryUpdateController;
-use App\Http\Controllers\Admin\Category\DeleteController as CategoryDeleteController;
+use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\TagController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', MainIndexController::class);
+Route::get('/', IndexController::class);
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', AdminIndexController::class);
+    Route::get('/', [HomeController::class, 'index'])->name('index');
 
-    Route::prefix('categories')->name('category.')->group(function () {
-        Route::get('/', CategoryIndexController::class)->name('index');
-        Route::get('/create', CategoryCreateController::class)->name('create');
-        Route::post('/create', CategoryStoreController::class)->name('store');
-        Route::get('/{category}', CategoryShowController::class)->name('show');
-        Route::get('/{category}/edit', CategoryEditController::class)->name('edit');
-        Route::patch('/{category}', CategoryUpdateController::class)->name('update');
-        Route::delete('/{category}', CategoryDeleteController::class)->name('delete');
+    Route::prefix('categories')->name('category.')->controller(CategoryController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('store');
+        Route::get('/{category}', 'show')->name('show');
+        Route::get('/{category}/edit', 'edit')->name('edit');
+        Route::patch('/{category}', 'update')->name('update');
+        Route::delete('/{category}', 'destroy')->name('delete');
+    });
+    Route::prefix('tags')->name('tag.')->controller(TagController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('store');
+        Route::get('/{tag}', 'show')->name('show');
+        Route::get('/{tag}/edit', 'edit')->name('edit');
+        Route::patch('/{tag}', 'update')->name('update');
+        Route::delete('/{tag}', 'destroy')->name('delete');
     });
 });
 

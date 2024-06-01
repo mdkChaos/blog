@@ -8,12 +8,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Add category</h1>
+                        <h1 class="m-0">Edit tag</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.category.index') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Add category</li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('admin.tag.index') }}">Tags</a></li>
+                            <li class="breadcrumb-item active">Edit tag</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -27,16 +28,17 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('admin.category.store') }}" method="post" class="form w-25">
+                        <form action="{{ route('admin.tag.update', $tag->id) }}" method="post" class="form w-25">
                             @csrf
+                            @method('patch')
                             <div class="form-group">
-                                <label>Name category</label>
-                                <input type="text" name="title" class="form-control" placeholder="Name category">
+                                <label>Name tag</label>
+                                <input type="text" name="title" class="form-control" value="{{ $tag->title }}">
                                 @error('title')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <input type="submit" value="Add" class="btn btn-primary col-4">
+                            <input type="submit" value="Update" class="btn btn-primary col-4">
                         </form>
                     </div>
                 </div>
