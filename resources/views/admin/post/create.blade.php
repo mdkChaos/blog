@@ -85,6 +85,9 @@
                                             {{ $category->title }}</option>
                                     @endforeach
                                 </select>
+                                @error('category_id')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group w-50">
                                 <label>Tags</label>
@@ -96,6 +99,9 @@
                                             value="{{ $tag->id }}">{{ $tag->title }}</option>
                                     @endforeach
                                 </select>
+                                @error('tag_ids')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Add" class="btn btn-primary col-1">
