@@ -28,7 +28,8 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('admin.post.update', $post->id) }}" method="post">
+                        <form action="{{ route('admin.post.update', $post->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('patch')
                             <div class="form-group w-25">
@@ -47,7 +48,7 @@
                                 @enderror
                             </div>
                             <div class="form-group w-50">
-                                <label for="exampleInputFile">Add preview image</label>
+                                <label for="exampleInputFile">Edit preview image, max 1 MB</label>
                                 <div class="w-50 mb-2">
                                     <img src="{{ asset('storage/' . $post->preview_image) }}" alt="preview_image"
                                         class="w-50">
@@ -66,7 +67,7 @@
                                 @enderror
                             </div>
                             <div class="form-group w-50">
-                                <label for="exampleInputFile">Add main image</label>
+                                <label for="exampleInputFile">Edit main image, max 1 MB</label>
                                 <div class="w-50 mb-2">
                                     <img src="{{ asset('storage/' . $post->main_image) }}" alt="main_image" class="w-50">
                                 </div>

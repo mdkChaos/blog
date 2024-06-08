@@ -47,7 +47,7 @@
                                 @enderror
                             </div>
                             <div class="form-group w-50">
-                                <label for="exampleInputFile">Add preview image</label>
+                                <label for="exampleInputFile">Add preview image, max 1 MB</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" name="preview_image">
@@ -62,7 +62,7 @@
                                 @enderror
                             </div>
                             <div class="form-group w-50">
-                                <label for="exampleInputFile">Add main image</label>
+                                <label for="exampleInputFile">Add main image, max 1 MB</label>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" name="main_image">
