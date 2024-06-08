@@ -23,6 +23,11 @@
 
         <!-- Main content -->
         <section class="content">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
@@ -74,6 +79,46 @@
                         </div>
                     </div>
                 </div>
+
+                @if ($deletedPosts->count() > 0)
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Deleted Posts</h3>
+                                </div>
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Title</th>
+                                                <th class="text-center">Restore</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($deletedPosts as $delPost)
+                                                <tr>
+                                                    <td>{{ $delPost->id }}</td>
+                                                    <td>{{ $delPost->title }}</td>
+                                                    <td class="text-center">
+                                                        <form action="{{ route('admin.post.restore', $delPost->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('patch')
+                                                            <button type="submit"
+                                                                class="btn btn-sm btn-primary">Restore</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->

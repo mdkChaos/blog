@@ -18,7 +18,9 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('admin.post.index', compact('posts'));
+        $deletedPosts = Post::onlyTrashed()->get();
+
+        return view('admin.post.index', compact('posts', 'deletedPosts'));
     }
 
     /**
@@ -28,6 +30,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
+
         return view('admin.post.create', compact('categories', 'tags'));
     }
 
@@ -104,5 +107,14 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('admin.post.index');
+    }
+
+
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->findOrFail($id);
+        $post->restore();
+
+        return redirect()->route('admin.post.index')->with('success', 'Post restored successfully.');
     }
 }

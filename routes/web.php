@@ -21,6 +21,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{post}/edit', 'edit')->name('edit');
         Route::patch('/{post}', 'update')->name('update');
         Route::delete('/{post}', 'destroy')->name('delete');
+        Route::patch('/posts/{id}/restore', 'restore')->name('restore');
     });
 
     Route::prefix('categories')->name('category.')->controller(CategoryController::class)->group(function () {
