@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{tag}/edit', 'edit')->name('edit');
         Route::patch('/{tag}', 'update')->name('update');
         Route::delete('/{tag}', 'destroy')->name('delete');
+    });
+
+    Route::prefix('users')->name('user.')->controller(UserController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/create', 'store')->name('store');
+        Route::get('/{user}', 'show')->name('show');
+        Route::get('/{user}/edit', 'edit')->name('edit');
+        Route::patch('/{user}', 'update')->name('update');
+        Route::delete('/{user}', 'destroy')->name('delete');
     });
 });
 
