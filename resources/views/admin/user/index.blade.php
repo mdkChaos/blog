@@ -74,6 +74,45 @@
                         </div>
                     </div>
                 </div>
+                @if ($deletedUsers->count() > 0)
+                    <div class="row mt-4">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Deleted Users</h3>
+                                </div>
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th class="text-center">Restore</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($deletedUsers as $delUser)
+                                                <tr>
+                                                    <td>{{ $delUser->id }}</td>
+                                                    <td>{{ $delUser->name }}</td>
+                                                    <td class="text-center">
+                                                        <form action="{{ route('admin.user.restore', $delUser->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('patch')
+                                                            <button type="submit"
+                                                                class="btn btn-sm btn-primary">Restore</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->

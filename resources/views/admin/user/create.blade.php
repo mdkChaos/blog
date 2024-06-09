@@ -31,9 +31,32 @@
                         <form action="{{ route('admin.user.store') }}" method="post" class="form w-25">
                             @csrf
                             <div class="form-group">
-                                <label>Name user</label>
-                                <input type="text" name="name" class="form-control" placeholder="Name user">
+                                <label>Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Name"
+                                    value="{{ old('name') }}">
                                 @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                <input type="email" name="email" class="form-control" placeholder="exemple@email.com"
+                                    value="{{ old('email') }}">
+                                @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" name="password" class="form-control">
+                                @error('password')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm password</label>
+                                <input type="password" name="password_confirmation" class="form-control">
+                                @error('password_confirmation')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>

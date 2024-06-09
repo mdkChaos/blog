@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\User\StoreRequest;
+use App\Http\Requests\Admin\User\UpdateRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,8 +16,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        $deletedUsers = User::onlyTrashed()->get();
 
-        return view('admin.user.index', compact('users'));
+        return view('admin.user.index', compact('users', 'deletedUsers'));
     }
 
     /**
@@ -29,9 +32,13 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $data = $request->validated();
+        $data['password'] = Hash::make($data['password']);
+        User::firstOrCreate($data);
+
+        return redirect()->route('admin.user.index');
     }
 
     /**
@@ -47,15 +54,18 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('admin.user.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateRequest $request, User $user)
     {
-        //
+        $data = $request->validated();
+        $user->update($data);
+
+        return redirect()->route('admin.user.show', compact('user'));
     }
 
     /**
@@ -63,6 +73,16 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('admin.user.index');
+    }
+
+    public function restore($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+        $user->restore();
+
+        return redirect()->route('admin.user.index');
     }
 }

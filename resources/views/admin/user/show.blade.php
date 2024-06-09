@@ -45,8 +45,12 @@
                                             <td>{{ $user->id }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Title</td>
+                                            <td>Name</td>
                                             <td>{{ $user->name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>E-mail</td>
+                                            <td>{{ $user->email }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
