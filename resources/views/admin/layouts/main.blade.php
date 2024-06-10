@@ -41,13 +41,27 @@
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
-                </li>
-            </ul>
+            <div class="container col-12 d-flex justify-content-between">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                                class="fas fa-bars"></i></a>
+                    </li>
+                </ul>
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item ml-auto">
+                        <p class="mb-0">{{ Auth::user()->name }}</p>
+                    </li>
+                    <li class="nav-item ml-3">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <input class="btn btn-outline-primary" type="submit" value="Logout">
+                        </form>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <!-- /.navbar -->
 
