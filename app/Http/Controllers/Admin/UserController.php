@@ -26,7 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $roles = User::getRoles();
+        return view('admin.user.create', compact('roles'));
     }
 
     /**
@@ -54,7 +55,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.user.edit', compact('user'));
+        $roles = User::getRoles();
+        return view('admin.user.edit', compact('user', 'roles'));
     }
 
     /**
