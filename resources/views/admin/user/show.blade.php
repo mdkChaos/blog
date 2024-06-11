@@ -22,7 +22,7 @@
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('admin.user.index') }}">Users</a></li>
-                            <li class="breadcrumb-item active">Show user</li>
+                            <li class="breadcrumb-item active">{{ $user->name }}</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
