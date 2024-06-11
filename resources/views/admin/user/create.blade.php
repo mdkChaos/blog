@@ -46,7 +46,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Password</label>
                                 <input type="password" name="password" class="form-control">
                                 @error('password')
@@ -59,7 +59,7 @@
                                 @error('password_confirmation')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="form-group w-25">
                                 <label>Select Role</label>
                                 <select name="role" class="form-control">
