@@ -6,10 +6,24 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Personal\CommentController;
+use App\Http\Controllers\Personal\HomeController as PersonalHomeController;
+use App\Http\Controllers\Personal\LikedController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', IndexController::class);
+
+Route::prefix('personal')->name('personal.')->middleware(['auth', 'verified'])->group(function () {
+    Route::get('/', [PersonalHomeController::class, 'index'])->name('index');
+
+    Route::prefix('liked')->name('liked.')->controller(LikedController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+    Route::prefix('comment')->name('comment.')->controller(CommentController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+});
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin', 'verified'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('index');
