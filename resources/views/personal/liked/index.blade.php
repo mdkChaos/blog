@@ -39,11 +39,30 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Title</th>
-                                            <th colspan="3" class="text-center">Actions</th>
+                                            <th colspan="2" class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <h3>Liked posts</h3>
+                                        @foreach ($posts as $post)
+                                            <tr>
+                                                <td>{{ $post->id }}</td>
+                                                <td>{{ $post->title }}</td>
+                                                <td class="text-center">
+                                                    <a href="{{ route('personal.liked.show', $post->id) }}"
+                                                        class="far fa-eye text-info"></a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <form action="{{ route('personal.liked.delete', $post->id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="border-0 bg-transparent">
+                                                            <i class="fas fa-trash-alt text-danger" role="button"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

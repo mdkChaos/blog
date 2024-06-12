@@ -19,6 +19,8 @@ Route::prefix('personal')->name('personal.')->middleware(['auth', 'verified'])->
 
     Route::prefix('liked')->name('liked.')->controller(LikedController::class)->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/{post}', 'show')->name('show');
+        Route::delete('/{post}', 'destroy')->name('delete');
     });
     Route::prefix('comment')->name('comment.')->controller(CommentController::class)->group(function () {
         Route::get('/', 'index')->name('index');
