@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('personal.layouts.main')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Categories</h1>
+                        <h1 class="m-0">Liked Posts</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Categories</li>
+                            <li class="breadcrumb-item"><a href="{{ route('personal.index') }}">Home</a></li>
+                            <li class="breadcrumb-item active">Liked Posts</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -27,7 +27,7 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-1 mb-3">
-                        <a href="{{ route('admin.category.create') }}" class="btn btn-block btn-primary">Add</a>
+                        <a href="#" class="btn btn-block btn-primary">Add</a>
                     </div>
                 </div>
                 <div class="row">
@@ -43,30 +43,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($categories as $category)
-                                            <tr>
-                                                <td>{{ $category->id }}</td>
-                                                <td>{{ $category->title }}</td>
-                                                <td class="text-center">
-                                                    <a href="{{ route('admin.category.show', $category->id) }}"
-                                                        class="far fa-eye text-info"></a>
-                                                </td>
-                                                <td class="text-center">
-                                                    <a href="{{ route('admin.category.edit', $category->id) }}"
-                                                        class="fas fa-edit text-success"></a>
-                                                </td>
-                                                <td class="text-center">
-                                                    <form action="{{ route('admin.category.delete', $category->id) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="border-0 bg-transparent">
-                                                            <i class="fas fa-trash-alt text-danger" role="button"></i>
-                                                        </button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        <h3>Liked posts</h3>
                                     </tbody>
                                 </table>
                             </div>
