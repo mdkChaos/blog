@@ -12,7 +12,7 @@ use App\Http\Controllers\Personal\LikedController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', IndexController::class);
+Route::get('/', IndexController::class)->name('index');
 
 Route::prefix('personal')->name('personal.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [PersonalHomeController::class, 'index'])->name('index');

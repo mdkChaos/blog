@@ -28,42 +28,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="edicaMainNav">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Blog</a>
-                            <div class="dropdown-menu" aria-labelledby="blogDropdown">
-                                <a class="dropdown-item" href="blog.html">Blog Archive</a>
-                                <a class="dropdown-item" href="blog-single.html">Blog Post</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Pages</a>
-                            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                                <a class="dropdown-item" href="404.html">404</a>
-                                <a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{{ route('index') }}">Blog</a>
                         </li>
                     </ul>
-                    {{-- <ul class="navbar-nav mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><span
-                                    class="flag-icon flag-icon-squared rounded-circle flag-icon-gb"></span> Eng</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Download</a>
-                        </li>
-                    </ul> --}}
-
                     <ul class="navbar-nav align-items-center">
                         @guest
                             @if (Route::has('login'))
@@ -101,21 +69,11 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
                             </li>
-                            {{-- <li class="nav-item">
-                                <p class="mb-0">{{ Auth::user()->name }}</p>
-                            </li>
-                            <li class="nav-item ml-2">
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <input class="btn btn-outline-primary" type="submit" value="Logout">
-                                </form>
-                            </li> --}}
                         @endguest
                     </ul>
                 </div>
