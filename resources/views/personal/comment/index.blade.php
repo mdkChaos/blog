@@ -39,11 +39,30 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Title</th>
-                                            <th colspan="3" class="text-center">Actions</th>
+                                            <th colspan="2" class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <h3>Comments</h3>
+                                        @foreach ($comments as $comment)
+                                            <tr>
+                                                <td>{{ $comment->id }}</td>
+                                                <td>{{ $comment->message }}</td>
+                                                <td class="text-center">
+                                                    <a href="{{ route('personal.comment.edit', $comment->id) }}"
+                                                        class="fas fa-edit text-success"></a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <form action="{{ route('personal.comment.delete', $comment->id) }}"
+                                                        method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="border-0 bg-transparent">
+                                                            <i class="fas fa-trash-alt text-danger" role="button"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

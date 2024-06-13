@@ -24,6 +24,9 @@ Route::prefix('personal')->name('personal.')->middleware(['auth', 'verified'])->
     });
     Route::prefix('comment')->name('comment.')->controller(CommentController::class)->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/{comment}/edit', 'edit')->name('edit');
+        Route::patch('/{comment}', 'update')->name('update');
+        Route::delete('/{comment}', 'destroy')->name('delete');
     });
 });
 

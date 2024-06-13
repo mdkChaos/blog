@@ -54,7 +54,7 @@
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav mt-2 mt-lg-0">
+                    {{-- <ul class="navbar-nav mt-2 mt-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="#"><span
                                     class="flag-icon flag-icon-squared rounded-circle flag-icon-gb"></span> Eng</a>
@@ -62,7 +62,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Download</a>
                         </li>
-                    </ul>
+                    </ul> --}}
 
                     <ul class="navbar-nav align-items-center">
                         @guest
@@ -78,11 +78,16 @@
                                 </li>
                             @endif
                         @else
-                            @if (Auth::user()->role === App\Models\User::ROLE_ADMIN)
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.index') }}">Panel</a>
-                                </li>
-                            @endif
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">Panel</a>
+                                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                                    @if (Auth::user()->role === App\Models\User::ROLE_ADMIN)
+                                        <a class="dropdown-item" href="{{ route('admin.index') }}">Admin</a>
+                                    @endif
+                                    <a class="dropdown-item" href="{{ route('personal.index') }}">Personal</a>
+                                </div>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
