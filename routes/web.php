@@ -1,18 +1,24 @@
 <?php
 
-use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Main\MainController;
 use App\Http\Controllers\Personal\CommentController;
 use App\Http\Controllers\Personal\HomeController as PersonalHomeController;
 use App\Http\Controllers\Personal\LikedController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', IndexController::class)->name('index');
+Route::name('main.')->controller(MainController::class)->group(function () {
+    Route::get('/', 'index')->name('index');
+
+    Route::prefix('posts')->name('post.')->group(function () {
+        Route::get('/{post}', 'show')->name('show');
+    });
+});
 
 Route::prefix('personal')->name('personal.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [PersonalHomeController::class, 'index'])->name('index');

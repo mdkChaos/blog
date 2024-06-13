@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="edicaMainNav">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('index') }}">Blog</a>
+                            <a class="nav-link" href="{{ route('main.index') }}">Blog</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav align-items-center">

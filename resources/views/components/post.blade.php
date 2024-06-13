@@ -5,7 +5,7 @@
         <img src="{{ asset('storage/' . $post->preview_image) }}" class="img-fluid" alt="blog post">
     </div>
     <p class="blog-post-category">{{ $post->category->title }}</p>
-    <a href="{{ route('admin.post.show', $post) }}" class="blog-post-permalink">
+    <a href="{{ route('main.post.show', $post) }}" class="blog-post-permalink">
         <h6 class="blog-post-title">{{ $post->title }}</h6>
     </a>
 </div>
