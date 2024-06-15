@@ -4,11 +4,10 @@
     <div class="comment-text">
         <span class="username">
             <b>{{ $comment->user->name }}</b>
-            <span class="text-muted float-right">{{ $comment->date_as_carbone->diffForHumans() }}</span>
-        </span><!-- /.username -->
+            <span class="text-muted float-right">{{ $comment->date_as_carbon->diffForHumans() }}</span>
+        </span>
         <p>
             {{ $comment->message }}
         </p>
     </div>
-    <!-- /.comment-text -->
 </div>
