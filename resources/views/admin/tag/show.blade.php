@@ -10,7 +10,7 @@
                     <div class="col-sm-6 d-flex align-items-center">
                         <h1 class="m-0 mr-2">{{ $tag->title }}</h1>
                         <a href="{{ route('admin.tag.edit', $tag->id) }}" class="fas fa-edit text-success"></a>
-                        <form action="{{ route('admin.tag.delete', $tag->id) }}" method="post">
+                        <form action="{{ route('admin.tag.destroy', $tag->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="border-0 bg-transparent">

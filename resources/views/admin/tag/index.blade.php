@@ -56,7 +56,8 @@
                                                         class="fas fa-edit text-success"></a>
                                                 </td>
                                                 <td class="text-center">
-                                                    <form action="{{ route('admin.tag.delete', $tag->id) }}" method="post">
+                                                    <form action="{{ route('admin.tag.destroy', $tag->id) }}"
+                                                        method="post">
                                                         @csrf
                                                         @method('delete')
                                                         <button type="submit" class="border-0 bg-transparent">

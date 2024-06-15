@@ -10,7 +10,7 @@
                     <div class="col-sm-6 d-flex align-items-center">
                         <h1 class="m-0 mr-2">{{ $user->name }}</h1>
                         <a href="{{ route('admin.user.edit', $user->id) }}" class="fas fa-edit text-success"></a>
-                        <form action="{{ route('admin.user.delete', $user->id) }}" method="post">
+                        <form action="{{ route('admin.user.destroy', $user->id) }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="border-0 bg-transparent">

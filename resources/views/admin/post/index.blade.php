@@ -61,7 +61,7 @@
                                                         class="fas fa-edit text-success"></a>
                                                 </td>
                                                 <td class="text-center">
-                                                    <form action="{{ route('admin.post.delete', $post->id) }}"
+                                                    <form action="{{ route('admin.post.destroy', $post->id) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('delete')

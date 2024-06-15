@@ -56,7 +56,7 @@
                                                         class="fas fa-edit text-success"></a>
                                                 </td>
                                                 <td class="text-center">
-                                                    <form action="{{ route('admin.category.delete', $category->id) }}"
+                                                    <form action="{{ route('admin.category.destroy', $category->id) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('delete')
