@@ -28,14 +28,34 @@
                                 <x-post.comment.comment :comment="$comment" />
                             @endforeach
                         </section>
-                        <section class="related-posts">
-                            <h2 class="section-title mb-4 text-center" data-aos="fade-up">Related Posts</h2>
-                            <div class="row">
-                                @foreach ($relatedPosts as $relatedPost)
-                                    <x-related-posts :post="$relatedPost" />
-                                @endforeach
-                            </div>
+                        <section>
+                            @auth
+                                <form action="{{ route('main.post.like.store', $post) }}" method="post">
+                                    @csrf
+                                    <span>{{ $post->liked_users_count }}</span>
+                                    <button type="submit" class="border-0 bg-transparent">
+                                        <i
+                                            class="fa{{ Auth::user()->likedPosts->contains($post->id) ? 's' : 'r' }} fa-heart"></i>
+                                    </button>
+                                </form>
+                            @endauth
+                            @guest
+                                <div>
+                                    <span>{{ $post->liked_users_count }}</span>
+                                    <i class="far fa-heart"></i>
+                                </div>
+                            @endguest
                         </section>
+                        @if ($relatedPosts->count() > 0)
+                            <section class="related-posts">
+                                <h2 class="section-title mb-4 text-center" data-aos="fade-up">Related Posts</h2>
+                                <div class="row">
+                                    @foreach ($relatedPosts as $relatedPost)
+                                        <x-related-posts :post="$relatedPost" />
+                                    @endforeach
+                                </div>
+                            </section>
+                        @endif
                     @endif
                     @auth
                         <section class="comment-section">
